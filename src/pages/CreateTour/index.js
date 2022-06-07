@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Button, Gap, Input, Upload} from '../../components'
 import TextArea from '../../components/atoms/textarea'
 import './createBlog.scss';
-import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { postToAPI, setForm, setImgPreview, updateToAPI } from '../../config/redux/action';
 import { withRouter } from 'react-router-dom';
@@ -16,7 +15,6 @@ const CreateTour = (props) => {
   const {name, category, address, operationalHour, ticket, description} = form;
   const [isUpdate, setIsUpdate] = useState(false);
   const dispatch = useDispatch();
-  const history = useHistory();
 
   useEffect(() => {
     const id = props.match.params.id;
@@ -72,7 +70,7 @@ const CreateTour = (props) => {
       </div>
       <Gap height={20} />
       <div className='container d-flex justify-content-end'>
-        <button className='btn btn-warning px-3 fs-5 text-white' onClick={() => history.push('/')}>{backIcon}</button>
+        <a className='btn btn-warning px-3 fs-5 text-white' href='/'>{backIcon}</a>
       </div>
       <Gap height={20} />
     </div>
