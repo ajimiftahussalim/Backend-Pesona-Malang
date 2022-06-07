@@ -57,10 +57,10 @@ const Home = () => {
             <th scope="col">Image</th>
             <th scope="col">Name</th>
             <th scope="col">Category</th>
-            <th scope="col">Action</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
-          {dataTour.map(tour => {
+          {dataTour.map((tour, index) => {
             return (
               <TourItem 
                 key={tour._id}
@@ -75,7 +75,7 @@ const Home = () => {
                 body={tour.body}
                 _id={tour._id}
                 onDelete={confirmDelete} 
-                index={tour.__v + 1}
+                index={index + 1}
               />
             )
           })}
