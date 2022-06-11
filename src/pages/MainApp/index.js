@@ -4,8 +4,8 @@ import { BrowserRouter as Router } from 'react-router-dom/cjs/react-router-dom.m
 import { Home } from '..';
 import { Header } from '../../components';
 import Footer from '../../components/molekuls/Footer';
-import CreateBlog from '../CreateTour';
-import DetailBlog from '../DetailTour';
+import CreateTour from '../CreateTour';
+import DetailTour from '../DetailTour';
 import './mainApp.scss';
 
 const MainApp = () => {
@@ -16,10 +16,10 @@ const MainApp = () => {
             <Router>
                 <Switch>
                     <Route path="/create-tour/:id?">
-                        <CreateBlog />
+                        <CreateTour />
                     </Route>
                     <Route path="/detail-tour/:id">
-                        <DetailBlog />
+                        <DetailTour />
                     </Route>
                     <Route path="/">
                         <Home />
@@ -32,4 +32,4 @@ const MainApp = () => {
   )
 }
 
-export default MainApp
+export default MainApp;
