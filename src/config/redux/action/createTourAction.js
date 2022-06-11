@@ -1,4 +1,4 @@
-import Axios from "axios"
+import Axios from "axios";
 
 export const setForm = (formType, formValue) => {
     return {type: 'SET_FORM_DATA', formType, formValue}
@@ -8,7 +8,7 @@ export const setImgPreview = (payload) => {
     return {type: 'SET_IMG_PREVIEW', payload}
 }
 
-export const postToAPI = (form) => {
+export const saveToAPI = (form) => {
     const data = new FormData();
     data.append('name', form.name);
     data.append('category', form.category);
