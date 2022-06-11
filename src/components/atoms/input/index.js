@@ -1,5 +1,4 @@
 import React from 'react';
-import './input.scss';
 
 const Input = ({label, ...rest}) => {
   return (
@@ -10,4 +9,4 @@ const Input = ({label, ...rest}) => {
   )
 }
 
-export default Input
+export default Input;
