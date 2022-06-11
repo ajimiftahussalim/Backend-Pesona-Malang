@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Gap, TourItem } from '../../components';
-import './home.scss';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDataTour } from '../../config/redux/action';
@@ -21,7 +20,7 @@ const Home = () => {
   const confirmDelete = (id) => {
     confirmAlert({
       title: 'Confirm to delete',
-      message: 'Apakah anda yakin akan menghapus post ini?',
+      message: 'Apakah anda yakin akan menghapus data wisata ini?',
       buttons: [
         {
           label: 'Yes',
@@ -38,7 +37,7 @@ const Home = () => {
         },
         {
           label: 'No',
-          onClick: () => console.log('user tidak setuju')
+          onClick: () => console.log('Delete data failed')
         }
       ]
     });
@@ -51,7 +50,7 @@ const Home = () => {
       <Gap height={20} />
       <div className='table-responsive'>
       <table className="table text-center">
-        <thead class="table-dark">
+        <thead className="table-dark">
           <tr>
             <th scope="col">No</th>
             <th scope="col">Image</th>
