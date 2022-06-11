@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Gap } from '../../components';
-import './detailBlog.scss';
 import { useHistory } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import Axios from 'axios';
 
+const backIcon = <FontAwesomeIcon icon={faArrowCircleLeft} />
+
 const DetailTour = (props) => {
-  const backIcon = <FontAwesomeIcon icon={faArrowCircleLeft} />
   const [data, setData] = useState({})
   useEffect(() => {
     const id = props.match.params.id;
