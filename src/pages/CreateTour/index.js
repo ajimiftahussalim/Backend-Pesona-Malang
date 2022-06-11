@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Gap, Input, Upload} from '../../components'
-import TextArea from '../../components/atoms/textarea'
-import './createBlog.scss';
+import React, { useEffect, useState } from 'react';
+import { Button, Gap, Input, Upload} from '../../components';
+import TextArea from '../../components/atoms/textarea';
 import { useDispatch, useSelector } from 'react-redux';
-import { postToAPI, setForm, setImgPreview, updateToAPI } from '../../config/redux/action';
+import { saveToAPI, setForm, setImgPreview, updateToAPI } from '../../config/redux/action';
 import { withRouter } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import Axios from 'axios';
 
@@ -42,7 +41,7 @@ const CreateTour = (props) => {
     if(isUpdate) {
       updateToAPI(form, id);
     } else {
-      postToAPI(form)
+      saveToAPI(form)
     }
   }
 
@@ -54,7 +53,7 @@ const CreateTour = (props) => {
   return (
     <div>
       <Gap height={20} />
-      <div className='container blog-post card p-5'>
+      <div className='container card p-5'>
         <h2 className='fs-2 mx-auto text-info'>Form {isUpdate ? 'Update': 'Create New'} Tour</h2>
         <Input label='Name' value={name} onChange={(e) => dispatch(setForm('name', e.target.value))} />
         <Input label='Category' value={category} onChange={(e) => dispatch(setForm('category', e.target.value))} />
