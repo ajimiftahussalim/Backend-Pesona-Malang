@@ -16,7 +16,7 @@ const TourItem = (props) => {
     <tbody>
       <tr className='align-middle'>
         <td>{index}</td>
-        <td><img src={image} width="50" class="img-thumbnail" alt=""/></td>
+        <td><img src={image} width="50" className="img-thumbnail" alt=""/></td>
         <td>{name}</td>
         <td>{category}</td>
         <td>
