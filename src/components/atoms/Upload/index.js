@@ -3,9 +3,10 @@ import './upload.scss';
 
 const Upload = ({img, ...rest}) => {
   return (
-    <div className='upload'>
+    <div className='upload mb-2'>
+        <label for="uploadFile" class="form-label">Upload Image</label>
+        <input type='file' id='uploadFile' className='form-control' {...rest} />
         {img && <img className='preview' src={img} alt='preview' />}
-        <input type='file' {...rest} />
     </div>
   )
 }

@@ -1,7 +1,7 @@
-import LoginBg from './images/login-bg.jpg'
-import logo from './images/logo.png';
+import Logo from './images/logo.png';
+import LoginImg from './images/img_login.png';
 
 export { 
-    LoginBg,
-    logo,
+  Logo,
+  LoginImg,
 };

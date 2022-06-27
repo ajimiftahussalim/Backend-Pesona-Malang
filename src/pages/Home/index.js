@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { Gap, TourItem } from '../../components';
+import { Gap } from '../../components';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDataTour } from '../../config/redux/action';
 import { confirmAlert } from 'react-confirm-alert';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Axios from 'axios';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const Home = () => {
-  const [counter] = useState(1);
-  const {dataTour} = useSelector(state => state.homeReducer);
+  const viewIcon = <FontAwesomeIcon icon={faEye} />
+  const updateIcon = <FontAwesomeIcon icon={faPenToSquare} />
+  const deleteIcon = <FontAwesomeIcon icon={faTrash} />
+  const [counter, setCounter] = useState(1);
+  const {dataTour, page} = useSelector(state => state.homeReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,10 +26,20 @@ const Home = () => {
   }, [counter, dispatch])
   const history = useHistory();
 
+  const previous = () => {
+    setCounter(counter <= 1 ? 1 : counter - 1);
+    console.log(counter);
+  }
+
+  const next = () => {
+    setCounter(counter === page.totalPage ? page.totalPage : counter + 1);
+    console.log(counter);
+  }
+
   const confirmDelete = (id) => {
     confirmAlert({
       title: 'Confirm to delete',
-      message: 'Apakah anda yakin akan menghapus data wisata ini?',
+      message: 'Apakah anda yakin ingin menghapus data wisata ini?',
       buttons: [
         {
           label: 'Yes',
@@ -45,7 +64,7 @@ const Home = () => {
 
   return (
     <div className='container'>
-      <Gap height={20} />
+      <Gap height={120} />
       <button className='btn btn-success' onClick={() => history.push('/create-tour')}>Create New Tour</button> 
       <Gap height={20} />
       <div className='table-responsive'>
@@ -59,26 +78,29 @@ const Home = () => {
             <th scope="col">Actions</th>
           </tr>
         </thead>
+        <tbody>
           {dataTour.map((tour, index) => {
             return (
-              <TourItem 
-                key={tour._id}
-                image={`http://localhost:4000/${tour.image}`}
-                name={tour.name}
-                category={tour.category}
-                address={tour.address}
-                operationalHour={tour.operationalHour}
-                ticket={tour.ticket}
-                description={tour.description}
-                date={tour.createdAt}
-                body={tour.body}
-                _id={tour._id}
-                onDelete={confirmDelete} 
-                index={index + 1}
-              />
+              <tr className='align-middle text-center'>
+                <td>{index + 1}</td>
+                <td><img src={`http://localhost:4000/${tour.image}`} style={{width: '50px', height: '50px'}} className="img-thumbnail" alt=""/></td>
+                <td>{tour.name}</td>
+                <td>{tour.category}</td>
+                <td>
+                  <button className='btn btn-primary' onClick={() => history.push(`/detail-tour/${tour._id}`)}>{viewIcon}</button>
+                  <button className='btn btn-warning ms-1' onClick={() => history.push(`/create-tour/${tour._id}`)}>{updateIcon}</button>  
+                  <button className='btn btn-danger ms-1' onClick={() => confirmDelete(tour._id)}>{deleteIcon}</button>
+                </td>
+              </tr>
             )
           })}
+          </tbody>
         </table>
+        <div className='container text-center'>
+          <button className='btn btn-outline-light btn-floating text-secondary' onClick={previous}><ArrowBackIosIcon /></button>
+          <span className='px-2'>{page.currentPage} / {page.totalPage}</span>
+          <button className='btn btn-outline-light btn-floating text-secondary' onClick={next}><ArrowForwardIosIcon /></button>
+        </div>
       </div>
       <Gap height={20} />
     </div>

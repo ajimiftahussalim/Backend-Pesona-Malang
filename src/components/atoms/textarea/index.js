@@ -1,12 +1,10 @@
 import React from 'react';
-import './textArea.scss';
 
 const TextArea = ({label, ...rest}) => {
   return (
     <div>
-      <p className='label'>{label}</p>
-      <textarea className='text-area' {...rest}>
-      </textarea>
+      <label for={label} className='form-label'>{label}</label>
+      <textarea id={label} className='form-control' required style={{height: '150px'}} {...rest}></textarea>
     </div>
   )
 }
