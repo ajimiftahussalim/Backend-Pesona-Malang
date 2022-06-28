@@ -79,10 +79,11 @@ const Home = () => {
           </tr>
         </thead>
         <tbody>
-          {dataTour.map((tour, index) => {
+          {dataTour.length !== 0 ?
+          dataTour.map((tour, index) => {
             return (
               <tr className='align-middle text-center'>
-                <td>{index + 1}</td>
+                <td>{(index + 1) + (page.currentPage - 1) * 10}</td>
                 <td><img src={`http://localhost:4000/${tour.image}`} style={{width: '50px', height: '50px'}} className="img-thumbnail" alt=""/></td>
                 <td>{tour.name}</td>
                 <td>{tour.category}</td>
@@ -93,7 +94,16 @@ const Home = () => {
                 </td>
               </tr>
             )
-          })}
+          })
+          :
+          <tr>
+            <td></td>
+            <td></td>
+            <td className='text-danger'>Data kosong</td>
+            <td></td>
+            <td></td>
+          </tr> 
+          }
           </tbody>
         </table>
         <div className='container text-center'>
