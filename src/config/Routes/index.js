@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-import { Login, MainApp, Signup } from '../../pages';
+import { Login, MainApp } from '../../pages';
 import './routes.scss';
 
 const Routes = () => {
@@ -15,9 +15,6 @@ const Routes = () => {
             <main id='mainContent'>
               <Route path="/login">
                 <Login />
-              </Route>
-              <Route path="/signup">
-                <Signup />
               </Route>
               <Route path="/">
                 <Redirect to='/login'></Redirect>
