@@ -6,17 +6,21 @@ import { Header } from '../../components';
 import Footer from '../../components/molekuls/Footer';
 import CreateTour from '../CreateTour';
 import DetailTour from '../DetailTour';
+import UpdateTour from '../UpdateTour';
 import './mainApp.scss';
 
 const MainApp = () => {
   return (
     <div className='main-app-wrapper'>
       <Header />
-      <main className='content-wrapper'>
+      <main id='mainContent' className='content-wrapper'>
         <Router>
           <Switch>
-            <Route path="/create-tour/:id?">
+            <Route path="/create-tour">
               <CreateTour />
+            </Route>
+            <Route path="/update-tour/:id?">
+              <UpdateTour />
             </Route>
             <Route path="/detail-tour/:id">
               <DetailTour />

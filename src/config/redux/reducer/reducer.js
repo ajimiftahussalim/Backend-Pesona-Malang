@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import homeReducer from "./homeReducer";
-import createTourReducer from "./createTourReduser";
+import tourReducer from "./tourReduser";
 
-const reducer = combineReducers({homeReducer, createTourReducer})
+const reducer = combineReducers({homeReducer, tourReducer})
 
 export default reducer;

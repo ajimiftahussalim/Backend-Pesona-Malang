@@ -1,2 +1,2 @@
 export * from './homeAction';
-export * from './createTourAction';
+export * from './tourAction';

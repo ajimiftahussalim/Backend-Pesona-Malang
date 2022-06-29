@@ -31,35 +31,35 @@ const Login = () => {
 	return (
 		<div className='container container-height mx-auto pt-5'>
 			<div className='row flex-lg-row-reverse align-items-center'>
-        <div className="col-lg-7 p-5">
-          <img src={LoginImg} className="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="500" loading="lazy" />
+        <div className='col-lg-7 p-5'>
+          <img src={LoginImg} tabIndex={0} className="d-block mx-lg-auto img-fluid" alt='gambar ilustrasi login' width='500' loading='lazy' />
         </div>
         <div className='col-lg-5 p-5'>
           <form onSubmit={handleSubmit}>
-            <h2 className='mb-3 text-info'>Selamat Datang !</h2>
-            <p>Silahkan login untuk melanjutkan ke dalam aplikasi.</p>
-            <label for='email' className='fw-bold'>Email</label>
+            <h2 tabIndex={0} className='mb-3 text-info'>Selamat Datang !</h2>
+            <p tabIndex={0}>Silahkan login untuk melanjutkan ke dalam aplikasi.</p>
+            <label tabIndex={0} for='email' className='fw-bold'>Email</label>
             <input
               type='email'
               id='email'
-              name="email"
+              name='email'
               onChange={handleChange}
               value={data.email}
               required
               className='form-control mb-3'
             />
-            <label for='password' className='fw-bold'>Password</label>
+            <label tabIndex={0} for='password' className='fw-bold'>Password</label>
             <input
               type="password"
               id='password'
-              name="password"
+              name='password'
               onChange={handleChange}
               value={data.password}
               required
               className='form-control mb-3'
             />
             {error && <div className='text-danger mb-3'>{error}</div>}
-            <button type='submit' className='btn btn-info text-white fw-bold px-5'>
+            <button type='submit' className='btn btn-info text-white fw-bold px-5' style={{padding: '10px 0'}}>
               Login
             </button>
           </form>
