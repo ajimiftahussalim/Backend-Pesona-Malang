@@ -39,7 +39,7 @@ const Home = () => {
   const confirmDelete = (id) => {
     Swal.fire({
       title: 'Are you sure?',
-      text: "Apakah kamu ingin menghapus data wisata ini?",
+      text: "Are you sure you want to delete this tour data?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
