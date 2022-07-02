@@ -2,12 +2,13 @@ import React from 'react';
 import { Gap } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveToAPI, setForm, setImgPreview } from '../../config/redux/action';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import './createTour.scss';
 
 const CreateTour = () => {
+  let history = useHistory();
   const backIcon = <FontAwesomeIcon icon={faArrowCircleLeft} />
   const {form, imgPreview} = useSelector(state => state.tourReducer);
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const CreateTour = () => {
     <div>
       <Gap height={120} />
       <div className='container d-flex justify-content-end mt-0'>
-        <a href='/' className='p-2 px-3 text-muted fs-3'>{backIcon}</a>
+        <button className='btn btn-none p-2 px-3 text-muted fs-3' onClick={history.goBack}>{backIcon}</button>
       </div>
       <form onSubmit={onSubmitData} className='container card p-5 mt-2'>
         <h2 tabIndex={0} className='fs-2 mx-auto text-info text-center'>Form Create New Tour</h2>
@@ -96,7 +97,7 @@ const CreateTour = () => {
           <div className='form-group col-md-4 mb-2'>
             <label tabIndex={0} for='latitude'>Latitude</label>
             <input 
-              type='number' 
+              type='text' 
               className='form-control mt-2' 
               id='latitude' 
               onChange={(e) => dispatch(setForm('lat', e.target.value))}
@@ -106,7 +107,7 @@ const CreateTour = () => {
           <div className='form-group col-md-4 mb-2'>
             <label tabIndex={0} for='longitude'>Longitude</label>
             <input 
-              type='number' 
+              type='text' 
               className='form-control mt-2' 
               id='longitude' 
               onChange={(e) => dispatch(setForm('long', e.target.value))}

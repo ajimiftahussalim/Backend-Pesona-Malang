@@ -10,6 +10,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import Axios from 'axios';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Swal from 'sweetalert2';
 
 const Home = () => {
@@ -70,7 +71,7 @@ const Home = () => {
         className='btn btn-success' 
         style={{padding: '10px 16px'}} 
         onClick={() => history.push('/create-tour')}
-      >Create New Tour</button> 
+      ><AddCircleIcon /> Create New Tour</button> 
       <Gap height={20} />
       <div className='table-responsive'>
       <table className="table text-center">

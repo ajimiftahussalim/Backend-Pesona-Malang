@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Gap } from '../../components';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import Axios from 'axios';
 
 const DetailTour = (props) => {
+  let history = useHistory();
   const backIcon = <FontAwesomeIcon icon={faArrowCircleLeft} />
   const [data, setData] = useState({})
   useEffect(() => {
@@ -34,7 +35,7 @@ const DetailTour = (props) => {
     <Gap height={120} />
     <div className='container col-xxl-8 px-4'>
       <div className='d-flex justify-content-end mt-0'>
-        <a href='/' className='p-2 px-3 text-muted fs-3'>{backIcon}</a>
+        <button className='btn btn-none p-2 px-3 text-muted fs-3' onClick={history.goBack}>{backIcon}</button>
       </div>
       <h2 tabIndex={0} className='text-info mt-2'>Detail data destinasi wisata {data.name}</h2>
         <div className='row flex-lg-row-reverse g-5 py-5'>
@@ -82,6 +83,14 @@ const DetailTour = (props) => {
                   <tr>
                     <td tabIndex={0}>Ticket</td>
                     <td tabIndex={0}>{data.ticket}</td>
+                  </tr>
+                  <tr>
+                    <td tabIndex={0}>Latitude</td>
+                    <td tabIndex={0}>{data.lat}</td>
+                  </tr>
+                  <tr>
+                    <td tabIndex={0}>Longitude</td>
+                    <td tabIndex={0}>{data.long}</td>
                   </tr>
                   <tr>
                     <td tabIndex={0}>Rating</td>

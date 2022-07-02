@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import { Gap } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { setForm, setImgPreview, updateToAPI } from '../../config/redux/action';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import Axios from 'axios';
 import './updateTour.scss';
 
 const UpdateTour = (props) => {
+  let history = useHistory();
   const backIcon = <FontAwesomeIcon icon={faArrowCircleLeft} />
   const {form, imgPreview} = useSelector(state => state.tourReducer);
   const {name, category, address, operationalHour, ticket, description, lat, long, rating} = form;
@@ -53,7 +54,7 @@ const UpdateTour = (props) => {
     <div>
       <Gap height={120} />
       <div className='container d-flex justify-content-end mt-0'>
-        <a href='/' className='p-2 px-3 text-muted fs-3'>{backIcon}</a>
+        <button className='btn btn-none p-2 px-3 text-muted fs-3' onClick={history.goBack}>{backIcon}</button>
       </div>
       <form onSubmit={onSubmitData} className='container card p-5 mt-2'>
         <h2 tabIndex={0} className='fs-2 mx-auto text-info'>Form Update Tour</h2>
